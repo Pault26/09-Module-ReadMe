@@ -60,6 +60,8 @@
 
 The purpose of this project was to make a system in Command Line that would take in user responses and place them into a professional ReadMe. This project streamlines the process of creating a ReadMe that is organized and ready to go with as little work as possible.
 
+Walkthrough: https://youtu.be/YXKIygReQ-o
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
