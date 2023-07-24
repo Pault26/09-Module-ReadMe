@@ -1,49 +1,31 @@
-// Function to return the license badge link based on the license name
-function renderLicenseBadge(license) {
-  if (license === "Mozilla Public License 2.0") {
-    return "https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg";
-  } else if (license === "Apache License 2.0") {
-    return "https://img.shields.io/badge/License-Apache_2.0-blue.svg";
-  } else if (license === "MIT License") {
-    return "https://img.shields.io/badge/License-MIT-yellow.svg";
-  } else if (license === "GNU License 3.0") {
-    return "https://img.shields.io/badge/License-GPLv3-blue.svg";
-  } else {
-    return "";
-  }
-}
-
-// Function to return the license link based on the license name
-function renderLicenseLink(license) {
-  if (license === "Mozilla Public License 2.0") {
-    return "https://choosealicense.com/licenses/mpl-2.0/";
-  } else if (license === "Apache License 2.0") {
-    return "https://choosealicense.com/licenses/apache-2.0/";
-  } else if (license === "MIT License") {
-    return "https://choosealicense.com/licenses/mit/";
-  } else if (license === "GNU License 3.0") {
-    return "https://opensource.org/licenses/EPL-1.0";
-  } else {
-    return "";
-  }
-}
-
-// Function to return the license section of ReadMe
-function renderLicenseSection(license) {
-  if (license) {
-    return `## License
-
-This project is licensed under the [${license}](${renderLicenseLink(license)}) license.
-![badge](${renderLicenseBadge(license)})
-`;
-  } else {
-    return "";
-  }
-}
-
-// Function to generate markdown for ReadMe
+// Function to Generate Full Markdown
 function generateMarkdown(data) {
-  const licenseSection = renderLicenseSection(data.license);
+  // Establish What License to use in ReadMe
+  if (data.license === "Mozilla Public License 2.0") {
+    data.badge = '[![badge](https://img.shields.io/badge/License-mpl--2.0-orange)](https://choosealicense.com/licenses/mpl-2.0/)';
+    data.licenseLink = `## License
+  
+    For more information about the license that was used, follow the link below!
+
+    https://choosealicense.com/licenses/mpl-2.0/`;
+  }
+  else if (data.license === "Apache License 2.0") {
+    data.badge = '[![badge]("https://img.shields.io/badge/License-apache--2.0-green")]("https://choosealicense.com/licenses/apache-2.0/")';
+    data.licenseLink = `## License
+  
+    For more information about the license that was used, follow the link below!
+
+    https://choosealicense.com/licenses/apache-2.0/`
+  }
+  else if (data.license === "MIT License") {
+    data.badge = '[![badge](https://img.shields.io/badge/License-mit-red)](https://choosealicense.com/licenses/mit/)';
+    data.licenseLink = `## License
+  
+    For more information about the license that was used, follow the link below!
+
+    https://choosealicense.com/licenses/mit/`
+  }
+  else (data.badge = "", data.licenseLink = "");
 
   return `# ${data.title}
 
@@ -52,6 +34,7 @@ function generateMarkdown(data) {
   <ol>
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#built-with">Built With</a></li>
     <li><a href="#installation">installation</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#license">License</a></li>
@@ -60,15 +43,23 @@ function generateMarkdown(data) {
 
 ## About The Project
 
+${data.badge}
+
 ${data.description}
 
-![badge](${data.badgeLink})
+${data.deployedWebsite}
 
 ## Usage
 
 ${data.usage}
 
-![-YOUR PROJECT NAME](-LINK TO YOUR SCREENSHOT-)
+![${data.imgAlt}](${data.screenshot})
+
+${data.screenshotSubtitle}
+
+## Built With
+
+${data.librariesAndTools}
 
 ## Installation
 
@@ -89,15 +80,16 @@ Don't forget to give the project a star! Thanks again!
 
 ## Contact
 
-If you have any further questions, or would like to get ahold of me, contact me below!
+If you have any further questions, feel free to reach out at any of the below places!
 
 * GitHub: ${data.username}
 
 * Email: ${data.email}
 
-${licenseSection}
+## License
+${data.licenseLink}
 ---
-`;
-}
-
+`
+};
+// Export ReadMe
 module.exports = generateMarkdown;
