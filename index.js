@@ -1,7 +1,9 @@
-// Application Packaging
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateMarkdown = require("./utils/generateMarkdown")
+const util = require("util");
+const generateMarkdown = require("./utils/generateMarkdown");
+
+const writeFileAsync = util.promisify(fs.writeFile);
 // ReadMe Question Array
 const questions = [
       {
@@ -54,22 +56,25 @@ const questions = [
     },
 ];
 
-// TODO: Create a function to write README file
-// function writeToFile(fileName, data) {
-//     fs.writeFile("professionalREADME.md", data, (err) =>
-//         err ? console.log(err) : console.log("Success!")
-//     );
-// }
-
-// Function to initialize app
-function init() {
-    inquirer.prompt(questions).then((data) => {
-        fs.writeFile("professionalREADME.md", generateMarkdown(data), (err) =>
-            err ? console.log(err) : console.log("Yeehaw! thats a Success!")
-        );
+async function promptUser() {
+    try {
+      const data = await inquirer.prompt(questions);
+      return data;
+    } catch (error) {
+      console.error("Error occurred while prompting questions:", error);
+      throw error;
     }
-    )
-}
-
-// Function call to initialize app
-init();
+  }
+  
+  async function init() {
+    try {
+      const userData = await promptUser();
+      const markdownContent = generateMarkdown(userData);
+      await writeFileAsync("professionalREADME.md", markdownContent);
+      console.log("Yeehaw! That's a Success!");
+    } catch (error) {
+      console.error("Error occurred while generating README:", error);
+    }
+  }
+  
+  init();
