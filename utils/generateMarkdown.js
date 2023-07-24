@@ -1,11 +1,13 @@
 // Function to return the license badge link based on the license name
 function renderLicenseBadge(license) {
   if (license === "Mozilla Public License 2.0") {
-    return "https://img.shields.io/badge/License-mpl--2.0-orange";
+    return "https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg";
   } else if (license === "Apache License 2.0") {
-    return "https://img.shields.io/badge/License-apache--2.0-green";
+    return "https://img.shields.io/badge/License-Apache_2.0-blue.svg";
   } else if (license === "MIT License") {
-    return "https://img.shields.io/badge/License-mit-red";
+    return "https://img.shields.io/badge/License-MIT-yellow.svg";
+  } else if (license === "GNU License 3.0") {
+    return "https://img.shields.io/badge/License-GPLv3-blue.svg";
   } else {
     return "";
   }
@@ -19,12 +21,14 @@ function renderLicenseLink(license) {
     return "https://choosealicense.com/licenses/apache-2.0/";
   } else if (license === "MIT License") {
     return "https://choosealicense.com/licenses/mit/";
+  } else if (license === "GNU License 3.0") {
+    return "https://opensource.org/licenses/EPL-1.0";
   } else {
     return "";
   }
 }
 
-// Function to return the license section of README
+// Function to return the license section of ReadMe
 function renderLicenseSection(license) {
   if (license) {
     return `## License
@@ -37,7 +41,7 @@ This project is licensed under the [${license}](${renderLicenseLink(license)}) l
   }
 }
 
-// Function to generate markdown for README
+// Function to generate markdown for ReadMe
 function generateMarkdown(data) {
   const licenseSection = renderLicenseSection(data.license);
 

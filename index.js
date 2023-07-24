@@ -1,8 +1,8 @@
+// Establish Global Variables
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 const generateMarkdown = require("./utils/generateMarkdown");
-
 const writeFileAsync = util.promisify(fs.writeFile);
 // ReadMe Question Array
 const questions = [
@@ -52,10 +52,10 @@ const questions = [
         type: "checkbox",
         name: "license",
         message: "Choose the license associated with your repository.",
-        choices: ["None", "MIT License", "Apache License 2.0", "Mozilla Public License 2.0"]
+        choices: ["None", "MIT License", "Apache License 2.0", "Mozilla Public License 2.0", "GNU License 3.0"]
     },
 ];
-
+// Function to prompt the user with the defined questions
 async function promptUser() {
     try {
       const data = await inquirer.prompt(questions);
@@ -65,7 +65,7 @@ async function promptUser() {
       throw error;
     }
   }
-  
+// Main function to initialize the process
   async function init() {
     try {
       const userData = await promptUser();
@@ -76,5 +76,5 @@ async function promptUser() {
       console.error("Error occurred while generating README:", error);
     }
   }
-  
+// Call the 'init' function to start the process
   init();
