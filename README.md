@@ -124,7 +124,7 @@ _For more examples, please refer to the [Documentation](https://github.com/Pault
 - [ ] Add more Topics
     - [ ] Getting Started
     - [ ] Road Map
-    - [ ] Contributing
+    - [x] Contributing
 - [ ] Improve Format
 
 See the [open issues](https://github.com/Pault26/09-Module-ReadMe/issues) for a full list of proposed features (and known issues).
