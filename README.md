@@ -186,7 +186,7 @@ Special Thanks to all who made this project possible!
 [license-url]: https://github.com/Pault26/09-Module-ReadMe/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/paul-tuemler/
-[product-screenshot]: ./assets/ReadMECapture.PNG
+[product-screenshot]: ./assets/ReadMeFinalCap.PNG
 [JavaScript]: https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
 [JavaScript-url]:https://www.w3schools.com/js/
 [Node.js]: https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
